@@ -1,0 +1,56 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <OutputType>Library</OutputType>
+    <AssemblyName>FPCore</AssemblyName>
+    <OutputPath>bin\Debug</OutputPath>
+   <PlatformTarget>x64</PlatformTarget>
+   <DebugSymbols>True</DebugSymbols>
+   <DebugType>Full</DebugType>
+   <Optimize>False</Optimize>
+   <WarningLevel>4</WarningLevel>
+<!--   <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+   <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>-->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--<ProjectReference Include="../ProjectName/ProjectName.csproj" />-->
+  </ItemGroup>
+
+  <ItemGroup> <!-- msbuild -t:restore -->
+    <!--
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2020.0.0">
+      <IncludeAssets>runtime;compile</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+     -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System"/>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <!--
+    <Reference Include="System.Data.SQLite.dll">
+      <HintPath>.\Stub.System.Data.SQLite.Core.NetFramework.1.0.114.0\lib\net46\System.Data.SQLite.dll</HintPath>
+      <Private>False</Private> to avoid copying the referenced assembly
+    </Reference>
+    -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Include="Option.cs" />
+  </ItemGroup>
+
+  <Target Name="RunTests" AfterTargets="Build">
+<!--    <Exec Command="" />-->
+  </Target>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

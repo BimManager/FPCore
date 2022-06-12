@@ -1,0 +1,39 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <OutputType>Library</OutputType>
+    <AssemblyName>FPCore.UnitTests</AssemblyName>
+    <OutputPath>bin\Debug</OutputPath>
+   <PlatformTarget>x64</PlatformTarget>
+   <DebugSymbols>True</DebugSymbols>
+   <DebugType>Full</DebugType>
+   <Optimize>False</Optimize>
+   <WarningLevel>4</WarningLevel>
+<!--   <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+   <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>-->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../src/FPCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup> <!-- msbuild -t:restore -->
+    <PackageReference Include="NUnit" Version="3.13.2" />
+    <PackageReference Include="NUnit.ConsoleRunner" Version="3.15.0"
+                      GeneratePathProperty="true" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System"/>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Include="FPCoreTests.cs" />
+  </ItemGroup>
+
+  <Target Name="RunTests" AfterTargets="Build">
+    <Exec Command="$(PkgNUnit_ConsoleRunner)\tools\nunit3-console.exe $(OutputPath)$(AssemblyName).dll" />
+  </Target>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
